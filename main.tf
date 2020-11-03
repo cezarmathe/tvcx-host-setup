@@ -142,7 +142,7 @@ resource "local_file" "ct_nomad_config" {
     cmd_timeout          = "10s"
   })
 
-  filename             = "/etc/consul-template.d/nomad-concig/config.hcl"
+  filename             = "/etc/consul-template.d/nomad-config/config.hcl"
   file_permission      = "0640"
   directory_permission = "0750"
 }
