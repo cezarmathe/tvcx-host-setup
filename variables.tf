@@ -52,5 +52,10 @@ variable "vault_ssl_cmd" {
 
 variable "nomad_config_dest" {
   type        = string
+  description = "The destination for a nomad config file."
+}
+
+variable "vault_ssl_cmd" {
+  type        = string
   description = "The command consul-template should run when there are any changes in the rendered templates for nomad config."
 }
