@@ -10,6 +10,17 @@ variable "consul_token" {
   description = "The Consul token that should be used by consul-template."
 }
 
+variable "consul_domain" {
+  type        = string
+  description = "The domain used by Consul for DNS queries."
+  default     = "consul"
+}
+
+variable "ip_san" {
+  type        = string
+  description = "IP SAN to use for certificates."
+}
+
 variable "vault_address" {
   type        = string
   description = "The Vault address that should be used by consul-template."
@@ -48,6 +59,11 @@ variable "vault_ssl_dest" {
 variable "vault_ssl_cmd" {
   type        = string
   description = "The command consul-template should run when there are any changes in the rendered templates for vault ssl."
+}
+
+variable "nomad_config" {
+  type        = string
+  description = "The Nomad configuration to get from Consul KV."
 }
 
 variable "nomad_config_dest" {

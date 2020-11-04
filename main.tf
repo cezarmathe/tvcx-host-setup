@@ -20,7 +20,10 @@ resource "local_file" "ct_consul_ssl" {
 }
 
 resource "local_file" "ct_consul_ssl_ca" {
-  content = file("${path.module}/templates/ssl/ca.pem")
+  content = templatefile("${path.module}/templates/ssl/ca.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/consul-ssl/ca.pem"
   file_permission      = "0640"
@@ -28,7 +31,10 @@ resource "local_file" "ct_consul_ssl_ca" {
 }
 
 resource "local_file" "ct_consul_ssl_cert" {
-  content = file("${path.module}/templates/ssl/cert.pem")
+  content = templatefile("${path.module}/templates/ssl/cert.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/consul-ssl/cert.pem"
   file_permission      = "0640"
@@ -36,7 +42,10 @@ resource "local_file" "ct_consul_ssl_cert" {
 }
 
 resource "local_file" "ct_consul_ssl_cert_key" {
-  content = file("${path.module}/templates/ssl/cert-key.pem")
+  content = templatefile("${path.module}/templates/ssl/cert-key.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/consul-ssl/cert-key.pem"
   file_permission      = "0600"
@@ -63,7 +72,10 @@ resource "local_file" "ct_nomad_ssl" {
 }
 
 resource "local_file" "ct_nomad_ssl_ca" {
-  content = file("${path.module}/templates/ssl/ca.pem")
+  content = templatefile("${path.module}/templates/ssl/ca.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/nomad-ssl/ca.pem"
   file_permission      = "0640"
@@ -71,7 +83,10 @@ resource "local_file" "ct_nomad_ssl_ca" {
 }
 
 resource "local_file" "ct_nomad_ssl_cert" {
-  content = file("${path.module}/templates/ssl/cert.pem")
+  content = templatefile("${path.module}/templates/ssl/cert.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/nomad-ssl/cert.pem"
   file_permission      = "0640"
@@ -79,7 +94,10 @@ resource "local_file" "ct_nomad_ssl_cert" {
 }
 
 resource "local_file" "ct_nomad_ssl_cert_key" {
-  content = file("${path.module}/templates/ssl/cert-key.pem")
+  content = templatefile("${path.module}/templates/ssl/cert-key.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/nomad-ssl/cert-key.pem"
   file_permission      = "0600"
@@ -106,7 +124,10 @@ resource "local_file" "ct_vault_ssl" {
 }
 
 resource "local_file" "ct_vault_ssl_ca" {
-  content = file("${path.module}/templates/ssl/ca.pem")
+  content = templatefile("${path.module}/templates/ssl/ca.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/vault-ssl/ca.pem"
   file_permission      = "0640"
@@ -114,7 +135,10 @@ resource "local_file" "ct_vault_ssl_ca" {
 }
 
 resource "local_file" "ct_vault_ssl_cert" {
-  content = file("${path.module}/templates/ssl/cert.pem")
+  content = templatefile("${path.module}/templates/ssl/cert.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/vault-ssl/cert.pem"
   file_permission      = "0640"
@@ -122,7 +146,10 @@ resource "local_file" "ct_vault_ssl_cert" {
 }
 
 resource "local_file" "ct_vault_ssl_cert_key" {
-  content = file("${path.module}/templates/ssl/cert-key.pem")
+  content = templatefile("${path.module}/templates/ssl/cert-key.pem", {
+    consul_domain = var.consul_domain
+    ip_san        = var.ip_san
+  })
 
   filename             = "/etc/consul-template.d/vault-ssl/cert-key.pem"
   file_permission      = "0600"
@@ -148,7 +175,9 @@ resource "local_file" "ct_nomad_config" {
 }
 
 resource "local_file" "ct_nomad_config_json" {
-  content = file("${path.module}/templates/nomad-config/nomad.json")
+  content = templatefile("${path.module}/templates/nomad-config/nomad.json", {
+    cfg = var.nomad_config
+  })
 
   filename             = "/etc/consul-template.d/nomad-config/nomad.json"
   file_permission      = "0640"
