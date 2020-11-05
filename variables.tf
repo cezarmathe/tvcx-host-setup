@@ -10,16 +10,16 @@ variable "consul_token" {
   description = "The Consul token that should be used by consul-template."
 }
 
-variable "consul_domain" {
-  type        = string
-  description = "The domain used by Consul for DNS queries."
-  default     = "consul"
-}
+# variable "consul_domain" {
+#   type        = string
+#   description = "The domain used by Consul for DNS queries."
+#   default     = "consul"
+# }
 
-variable "ip_san" {
-  type        = string
-  description = "IP SAN to use for certificates."
-}
+# variable "ip_san" {
+#   type        = string
+#   description = "IP SAN to use for certificates."
+# }
 
 variable "vault_address" {
   type        = string
@@ -31,35 +31,35 @@ variable "vault_token" {
   description = "The Vault address that should be used by consul-template."
 }
 
-variable "consul_ssl_dest" {
-  type        = string
-  description = "Where consul-template will install the SSL files for Consul."
-}
+# variable "consul_ssl_dest" {
+#   type        = string
+#   description = "Where consul-template will install the SSL files for Consul."
+# }
 
-variable "consul_ssl_cmd" {
-  type        = string
-  description = "The command consul-template should run when there are any changes in the rendered templates for consul ssl."
-}
+# variable "consul_ssl_cmd" {
+#   type        = string
+#   description = "The command consul-template should run when there are any changes in the rendered templates for consul ssl."
+# }
 
-variable "nomad_ssl_dest" {
-  type        = string
-  description = "Where consul-template will install the SSL files for Nomad."
-}
+# variable "nomad_ssl_dest" {
+#   type        = string
+#   description = "Where consul-template will install the SSL files for Nomad."
+# }
 
-variable "nomad_ssl_cmd" {
-  type        = string
-  description = "The command consul-template should run when there are any changes in the rendered templates for nomad ssl."
-}
+# variable "nomad_ssl_cmd" {
+#   type        = string
+#   description = "The command consul-template should run when there are any changes in the rendered templates for nomad ssl."
+# }
 
-variable "vault_ssl_dest" {
-  type        = string
-  description = "Where consul-template will install the SSL files for Vault."
-}
+# variable "vault_ssl_dest" {
+#   type        = string
+#   description = "Where consul-template will install the SSL files for Vault."
+# }
 
-variable "vault_ssl_cmd" {
-  type        = string
-  description = "The command consul-template should run when there are any changes in the rendered templates for vault ssl."
-}
+# variable "vault_ssl_cmd" {
+#   type        = string
+#   description = "The command consul-template should run when there are any changes in the rendered templates for vault ssl."
+# }
 
 variable "nomad_config" {
   type        = string
