@@ -64,8 +64,6 @@ KillMode=process
 KillSignal=SIGINT
 Restart=on-failure
 RestartSec=2
-StartLimitBurst=3
-StartLimitIntervalSec=10
 [Install]
 WantedBy=multi-user.target
 EOF

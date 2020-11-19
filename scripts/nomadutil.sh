@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-# nomadutil - a utility script for Nomad
+# nomadutil - a utility script for managing Nomad.
 
-function nomad_start() {
+function nomadutil_start() {
     systemctl enable --now nomad
     printf "%s\n" "Done!"
 }
 
-function nomad_stop() {
+function nomadutil_stop() {
     systemctl disable --now nomad
     printf "%s\n" "Done!"
 }
 
-function nomad_install() {
+function nomadutil_install() {
     local arch
     arch="$1"; shift
     local ver
@@ -55,13 +55,13 @@ EOF
     printf "%s\n" "Done!"
 }
 
-function nomad_uninstall() {
+function nomadutil_uninstall() {
     rm /usr/local/bin/nomad
     rm /etc/systemd/system/nomad.service
     printf "%s\n" "Done!"
 }
 
-function nomad_cni() {
+function nomadutil_cni() {
     local arch
     arch="$1"; shift
     local ver
@@ -84,19 +84,19 @@ function main() {
 
     case "${cmd}" in
     "install")
-        nomad_install $@
+        nomadutil_install $@
         ;;
     "uninstall")
-        nomad_uninstall
+        nomadutil_uninstall
         ;;
     "start")
-        nomad_start
+        nomadutil_start
         ;;
     "stop")
-        nomad_stop
+        nomadutil_stop
         ;;
     "cni")
-        nomad_cni $@
+        nomadutil_cni $@
         ;;
     *)
         printf "%s\n" "Available commands: install start stop uninstall cni"
